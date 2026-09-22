@@ -268,3 +268,16 @@
         padding: 10px 8px;
     }
 }
+
+@media (max-width: 600px) {
+    .texto-cuenta {
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 380px) {
+    .texto-cuenta {
+        font-size: 0.68rem;
+    }
+}
