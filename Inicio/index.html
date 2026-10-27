@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Club de Atletismo Al-Ándalus en Córdoba. Entrena en El Fontanar: escuelas deportivas desde Peques hasta Máster y preparación física para Opositores CNP.">
+    <meta property="og:title" content="Inicio | Club de Atletismo Al-Ándalus Córdoba">
+    <meta property="og:description"
+        content="Más que correr, somos historia. Entrena con el Club de Atletismo Al-Ándalus en el corazón de Córdoba.">
+    <meta property="og:image" content="../logoactual.jpeg">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../logoactual.jpeg">
-    <title>Inicio | Al-Andalus</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="../logoactual.jpeg">
+    <title>Inicio | Club de Atletismo Al-Ándalus</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../style-mobile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,12 +26,12 @@
 <body>
     <header class="header-principal">
         <nav class="navbar">
-            <div class="logo">
-                <img src="../logoactual.jpeg" alt="Logo Al-Ándalus" class="escudo">
-                <img src="../name.png" alt="Nombre Al-Ándalus" class="name">
-            </div>
+            <a href="/Inicio" class="logo" aria-label="Ir al inicio">
+                <img src="../logoactual.jpeg" alt="Escudo Club de Atletismo Al-Ándalus" class="escudo">
+                <img src="../name.png" alt="Al-Ándalus" class="name">
+            </a>
 
-            <div class="hamburger" id="hamburger">
+            <div class="hamburger" id="hamburger" aria-label="Abrir menú" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -42,126 +51,143 @@
         <div class="menu-overlay" id="menu-overlay"></div>
     </header>
 
-    <header id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>MÁS QUE CORRER, <span class="highlight">SOMOS HISTORIA</span></h1>
-            <P>Entrena con el Club de Atletismo Al-Andalus en el corazón de Córdoba.</P>
-            <div class="hero-btns">
-                <a href="/Escuelas" class="btn-primary">Ver Grupos</a>
-                <a href="/Inicio#inscripciones" class="btn-secondary">Inscripciones</a>
-            </div>
-        </div>
-    </header>
-    <section class="promo-cartel-section">
-        <div class="promo-container">
-            <div class="promo-badge">¡Comienzo de Temporada!</div>
-            <h2>Únete al Club de Atletismo Al-Andalus</h2>
-            <p>Apertura de inscripciones para todas las categorías y grupos. ¡Entrena, supérate y disfruta en equipo!
-            </p>
-
-            <div class="carteles-grid">
-                <div class="cartel-wrapper">
-                    <img src="../cartel_temporada.jpeg"
-                        alt="Cartel Comienzo de Temporada - Atletismo Al Andalus Córdoba" class="cartel-img">
-                </div>
-                <div class="cartel-wrapper">
-                    <img src="../cartel_temporada_padres.jpeg" alt="Cartel Informativo Atletismo Al Andalus Córdoba"
-                        class="cartel-img">
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>MÁS QUE CORRER, <span class="highlight">SOMOS HISTORIA</span></h1>
+                <p>Entrena con el Club de Atletismo Al-Ándalus en el corazón de Córdoba.</p>
+                <div class="hero-btns">
+                    <a href="/Escuelas" class="btn-primary">Ver Grupos</a>
+                    <a href="/Inicio#inscripciones" class="btn-secondary">Inscripciones</a>
                 </div>
             </div>
+        </section>
 
-            <div class="promo-actions">
-                <a href="https://forms.gle/KTURQFoSJZ984VAT7" target="_blank" rel="noopener noreferrer"
-                    class="btn-primary">
-                    Inscribirme ahora
+        <section class="promo-cartel-section">
+            <div class="promo-container">
+                <div class="promo-badge">¡Comienzo de Temporada!</div>
+                <h2>Únete al Club de Atletismo Al-Ándalus</h2>
+                <p>Apertura de inscripciones para todas las categorías y grupos. ¡Entrena, supérate y disfruta en
+                    equipo!</p>
+
+                <div class="carteles-grid">
+                    <div class="cartel-wrapper">
+                        <img src="../cartel_temporada.jpeg"
+                            alt="Cartel Comienzo de Temporada - Atletismo Al-Ándalus Córdoba" class="cartel-img"
+                            loading="lazy">
+                    </div>
+                    <div class="cartel-wrapper">
+                        <img src="../cartel_temporada_padres.jpeg"
+                            alt="Cartel Grupo de Padres - Atletismo Al-Ándalus Córdoba" class="cartel-img"
+                            loading="lazy">
+                    </div>
+                </div>
+
+                <div class="promo-actions">
+                    <a href="https://forms.gle/KTURQFoSJZ984VAT7" target="_blank" rel="noopener noreferrer"
+                        class="btn-primary">
+                        Inscribirme ahora
+                    </a>
+                    <a href="/Escuelas" class="btn-secondary">
+                        Ver Horarios y grupos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature-card">
+                    <h3>Valores</h3>
+                    <p>Esfuerzo, compañerismo y superación en cada zancada.</p>
+                </div>
+                <div class="feature-card highlighted">
+                    <h3>Tecnificación</h3>
+                    <p>Entrenadores titulados para llevarte al siguiente nivel.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Córdoba</h3>
+                    <p>Orgullosos de representar a nuestra ciudad en toda España.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="noticias" class="noticias-section">
+            <h2>Últimas Noticias</h2>
+            <div class="grid-noticias">
+                <article class="noticia-card">
+                    <span class="fecha">28 de Junio de 2026</span>
+                    <h3>Campeonato de España Máster</h3>
+                    <p>Gesta y orgullo de nuestra delegación en el Campeonato de España Máster. Cristina López se corona
+                        campeona nacional tras conquistar el primer puesto en salto de longitud y se convierte en
+                        finalista en los 100ml. Por su parte, Cayetano Soriano pulveriza su marca personal adjudicándose
+                        la 6ª plaza en los 200ml, en una jornada marcada por la entrega absoluta de todo el equipo.</p>
+                    <a href="/Noticias/noticia1/index.html" class="read-more">Leer más <i
+                            class="fa-solid fa-arrow-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                </article>
+
+                <article class="noticia-card">
+                    <span class="fecha">20 de Junio de 2026</span>
+                    <h3>Campeonato de Andalucía Sub-14 por equipos</h3>
+                    <p>Apasionante actuación de nuestra cantera en el Campeonato de Andalucía Sub-14. El equipo de
+                        relevos masculino firmó una competición espectacular rozando el podio con una valiosa 4ª
+                        posición a escasas décimas del bronce, mientras que el equipo femenino demostró un gran coraje
+                        al reponerse de una caída de testigo para superar con garra a seis rivales.</p>
+                    <a href="/Noticias/noticia2/index.html" class="read-more">Leer más <i
+                            class="fa-solid fa-arrow-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                </article>
+            </div>
+        </section>
+
+        <section id="galeria" class="galeria-section">
+            <h2>Galería</h2>
+            <div class="grid-galeria">
+                <a href="/Galería" class="img-box">
+                    <img src="../img1.jpeg" alt="Entrenamiento y competición Club de Atletismo Al-Ándalus"
+                        loading="lazy">
                 </a>
-                <a href="/Escuelas" class="btn-secondary">
-                    Ver Horarios y grupos
+                <a href="/Galería" class="img-box">
+                    <img src="../img10.jpeg" alt="Atletas del Club Al-Ándalus en pista" loading="lazy">
+                </a>
+                <a href="/Galería" class="img-box">
+                    <img src="../img3.jpeg" alt="Equipo de atletismo Al-Ándalus Córdoba" loading="lazy">
+                </a>
+                <a href="/Galería" class="img-box">
+                    <img src="../img13.jpeg" alt="Jornada de competición Al-Ándalus" loading="lazy">
                 </a>
             </div>
-        </div>
-    </section>
-    <section class="features">
-        <div class="container">
-            <div class="feature-card">
-                <h3>Valores</h3>
-                <p>Esfuerzo, compañerismo y superación en cada zancada.</p>
+            <div class="galeria-cta">
+                <a href="/Galería" class="btn-primary">Ver galería completa</a>
             </div>
-            <div class="feature-card highlighted">
-                <h3>Tecnificación</h3>
-                <p>Entrenadores titulados para llevarte al siguiente nivel.</p>
+        </section>
+
+        <section id="inscripciones" class="inscripcion-section">
+            <div class="container-form">
+                <h2>¿Quieres formar parte del <span class="highlight">Al-Ándalus</span>?</h2>
+                <p>Rellena nuestro formulario de inscripción en Google y nos pondremos en contacto contigo lo antes
+                    posible para tu primera sesión de entrenamiento.</p>
+
+                <div style="margin-top: 30px;">
+                    <a href="https://forms.gle/KTURQFoSJZ984VAT7" target="_blank" rel="noopener noreferrer"
+                        class="btn-submit" style="display: inline-block; text-decoration: none; max-width: 350px;">
+                        Rellenar Formulario
+                    </a>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3>Córdoba</h3>
-                <p>Orgullosos de representar a nuestra ciudad en toda España.</p>
+        </section>
+
+        <section class="sponsors-section">
+            <h2>Colaboradores y Patrocinadores</h2>
+            <p>Gracias a las empresas que hacen posible nuestro proyecto deportivo</p>
+            <div class="sponsors-container">
+                <img src="../sheram.png" alt="Sheram" loading="lazy">
+                <img src="../imdeco.png" alt="Imdeco" loading="lazy">
+                <img src="../faa.png" alt="Federación Andaluza de Atletismo" loading="lazy">
+                <img src="../RUX.png" alt="RUX" loading="lazy">
+                <img src="../ariCeramic.jpeg" alt="Ari Ceramic" loading="lazy">
             </div>
-        </div>
-    </section>
-    <section id="noticias" class="noticias-section">
-        <h2>Últimas Noticias</h2>
-        <div class="grid-noticias">
-
-            <article class="noticia-card">
-                <span class="fecha">28 de Junio de 2026</span>
-                <h3>Campeonato de España Máster</h3>
-                <p>Gesta y orgullo de nuestra delegación en el Campeonato de España Máster. Cristina López se corona
-                    campeona nacional tras conquistar el primer puesto en salto de longitud y se convierte en finalista
-                    en los 100ml. Por su parte, Cayetano Soriano pulveriza su marca personal adjudicándose la 6ª plaza
-                    en los 200ml, en una jornada marcada por la entrega absoluta de todo el equipo.
-                </p>
-                <a href="/Noticias/noticia1/index.html" class="read-more">Leer más <i class="fa-solid fa-arrow-right"
-                        style="font-size: 0.8rem; margin-left: 5px;"></i></a>
-            </article>
-
-            <article class="noticia-card">
-                <span class="fecha">20 de Junio de 2026</span>
-                <h3>Campeonato de Andalucía Sub-14 por equipos</h3>
-                <p>Apasionante actuación de nuestra cantera en el Campeonato de Andalucía Sub-14. El equipo de relevos
-                    masculino firmó una competición espectacular rozando el podio con una valiosa 4ª posición a escasas
-                    décimas del bronce, mientras que el equipo femenino demostró un gran coraje al reponerse de una
-                    caída de testigo para superar con garra a seis rivales.</p>
-                <a href="/Noticias/noticia2/index.html" class="read-more">Leer más <i class="fa-solid fa-arrow-right"
-                        style="font-size: 0.8rem; margin-left: 5px;"></i></a>
-            </article>
-
-        </div>
-    </section>
-    <section id="galeria" class="galeria-section">
-        <h2>Galería</h2>
-        <div class="grid-galeria">
-            <div class="img-box" style="background-image: url(../img1.jpeg);"></div>
-            <div class="img-box" style="background-image: url(../img10.jpeg);"></div>
-            <div class="img-box" style="background-image: url(../img3.jpeg);"></div>
-            <div class="img-box" style="background-image: url(../img13.jpeg);"></div>
-        </div>
-    </section>
-
-    <section id="inscripciones" class="inscripcion-section">
-        <div class="container-form">
-            <h2>¿Quieres formar parte del <span class="highlight">Al-Andalus</span>?</h2>
-            <p>Rellena nuestro formulario de inscripción en Google y nos pondremos en contacto contigo lo antes posible
-                para tu primera sesión de entrenamiento.</p>
-
-            <div style="margin-top: 30px;">
-                <a href="https://forms.gle/KTURQFoSJZ984VAT7" target="_blank" rel="noopener noreferrer"
-                    class="btn-submit" style="display: inline-block; text-decoration: none; max-width: 350px;">
-                    Rellenar Formulario
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="sponsors-section">
-        <h2>Colaboradores y Patrocinadores</h2>
-        <p>Gracias a las empresas que hacen posible nuestro proyecto deportivo</p>
-        <div class="sponsors-container">
-            <img src="../sheram.png" alt="Sheram">
-            <img src="../imdeco.png" alt="Imdeco">
-            <img src="../faa.png" alt="FAA">
-            <img src="../RUX.png" alt="RUX">
-            <img src="../ariCeramic.jpeg" alt="Ari Ceramic">
-        </div>
-
-    </section>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-container">
@@ -185,38 +211,33 @@
 
             <div class="footer-column contact">
                 <h4>Dónde estamos</h4>
-                <p>📍 IDM El Fontanar, Córdoba</p>
-                <p>📧 al.andalusatletismocordoba@gmail.com</p>
-                <p>📞 +34 620 585 735 / +34 620 905 347</p>
+                <p>📍 <a href="https://maps.google.com/?q=Instalacion+Deportiva+Municipal+El+Fontanar+Cordoba"
+                        target="_blank" rel="noopener noreferrer">IDM El Fontanar, Córdoba</a></p>
+                <p>📧 <a href="mailto:al.andalusatletismocordoba@gmail.com">al.andalusatletismocordoba@gmail.com</a></p>
+                <p>📞 <a href="tel:+34620585735">+34 620 585 735</a> / <a href="tel:+34620905347">+34 620 905 347</a>
+                </p>
             </div>
 
             <div class="footer-column social">
                 <h4>Síguenos</h4>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/clubdeatletismoalandalus?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                        class="social-icon" aria-label="Instagram">
+                    <a href="https://www.instagram.com/clubdeatletismoalandalus" target="_blank"
+                        rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="https://www.instagram.com/clubdeatletismoalandalus?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                        class="link"><em>@clubatletismoalandalus</em></a>
+                    <a href="https://www.instagram.com/clubdeatletismoalandalus" target="_blank"
+                        rel="noopener noreferrer" class="link"><em>@clubdeatletismoalandalus</em></a>
                 </div>
             </div>
         </div>
-        <footer class="footer-principal"
-            style="text-align: center; padding: 20px 10px; background-color: #1a1a1a; border-top: 1px solid #333;">
-            <p style="margin: 0; color: #ffffff; font-size: 0.9rem; letter-spacing: 0.5px;">
-                &copy; 2026 Club de Atletismo Al-Ándalus Córdoba. Todos los derechos reservados.
-            </p>
-
+        <div class="footer-principal">
+            <p>&copy; 2026 Club de Atletismo Al-Ándalus Córdoba. Todos los derechos reservados.</p>
             <div class="footer-links">
-                <a href="/Terminos"
-                    style="color: #ff6600; text-decoration: none; font-size: 0.85rem; font-weight: bold; transition: color 0.3s;"
-                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ff6600'">
-                    Términos y Condiciones de Uso
-                </a>
+                <a href="/Terminos">Términos y Condiciones de Uso</a>
             </div>
-        </footer>
+        </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
@@ -251,5 +272,7 @@
         });
     </script>
 </body>
+
+</html>
 
 </html>

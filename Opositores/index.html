@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Preparación física para Oposiciones a la Policía Nacional (CNP) en Córdoba con el Club de Atletismo Al-Ándalus en IDM El Fontanar.">
+    <meta property="og:title" content="Opositores CNP | Club de Atletismo Al-Ándalus">
+    <meta property="og:description"
+        content="Prepara las pruebas físicas del CNP en El Fontanar con entrenadores especializados en carrera, circuito y fuerza.">
+    <meta property="og:image" content="../logoactual.jpeg">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../logoactual.jpeg">
-    <title>Opositores | Al-Andalus</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="../logoactual.jpeg">
+    <title>Opositores CNP | Club de Atletismo Al-Ándalus</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../style-mobile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,12 +26,12 @@
 <body>
     <header class="header-principal">
         <nav class="navbar">
-            <div class="logo">
-                <img src="../logoactual.jpeg" alt="Logo Al-Ándalus" class="escudo">
-                <img src="../name.png" alt="Nombre Al-Ándalus" class="name">
-            </div>
+            <a href="/Inicio" class="logo" aria-label="Ir al inicio">
+                <img src="../logoactual.jpeg" alt="Escudo Club de Atletismo Al-Ándalus" class="escudo">
+                <img src="../name.png" alt="Al-Ándalus" class="name">
+            </a>
 
-            <div class="hamburger" id="hamburger">
+            <div class="hamburger" id="hamburger" aria-label="Abrir menú" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -41,38 +50,42 @@
         </nav>
         <div class="menu-overlay" id="menu-overlay"></div>
     </header>
+
     <main>
         <section class="page-header">
-            <h1>Oposiciones <span class="higlight">CNP</span></h1>
+            <h1>Oposiciones <span class="highlight">CNP</span></h1>
         </section>
+
         <section class="coaches-section">
             <h2>Entrenadores</h2>
             <div class="coaches-grid">
                 <div class="coach-card">
-                    <img src="../tinky.jpeg" alt="Miguel Ángel Quesada" class="coach-img">
+                    <img src="../tinky.jpeg" alt="Miguel Ángel Quesada" class="coach-img" loading="lazy">
                     <h3>Miguel Ángel Quesada</h3>
                     <p class="role">Instructor CNP</p>
                     <p>Especialista en preparación física para el CNP. Enfoque en optimización de tiempos y superación
                         de marcas personales para el apto.</p>
                 </div>
                 <div class="coach-card">
-                    <img src="../Cristian.jpeg" alt="Cristian Zamorano" class="coach-img">
+                    <img src="../Cristian.jpeg" alt="Cristian Zamorano" class="coach-img" loading="lazy">
                     <h3>Cristian Zamorano</h3>
                     <p class="role">Instructor CNP</p>
                     <p>Experto en fuerza y potencia explosiva. Especialista en la preparación específica de dominadas y
                         suspensión.</p>
                 </div>
                 <div class="coach-card">
-                    <img src="../Jesus.jpeg" alt="Jesús Segura" class="coach-img">
+                    <img src="../Jesus.jpeg" alt="Jesús Segura" class="coach-img" loading="lazy">
                     <h3>Jesús Segura</h3>
                     <p class="role">Instructor CNP</p>
                     <p>Especialista en biomecánica y técnica de carrera. Optimización de la zancada para los 1000m y
                         agilidad máxima en el circuito técnico.</p>
                 </div>
-                <div></div>
+            </div>
+            <div style="margin-top: 35px;">
                 <a href="#inscripcion-opositores" class="btn-primary">Solicitar plaza</a>
             </div>
         </section>
+
         <section class="info-section">
             <h2>Nuestros turnos</h2>
             <div class="grid-grupos">
@@ -90,7 +103,7 @@
                 <div class="card-grupo">
                     <h3>Turno 3</h3>
                     <p>Martes y Jueves: 20:30</p>
-                    <p>Sábado: 9:00 </p>
+                    <p>Sábados: 9:00</p>
                 </div>
             </div>
         </section>
@@ -103,22 +116,22 @@
                 <input type="hidden" name="_subject" value="Nueva Solicitud: OPOSICIONES CNP">
 
                 <div class="form-group">
-                    <label>Nombre Completo</label>
-                    <input type="text" name="Nombre" placeholder="Tu nombre" required>
+                    <label for="op-nombre">Nombre Completo</label>
+                    <input id="op-nombre" type="text" name="Nombre" placeholder="Tu nombre" required>
                 </div>
                 <div class="form-group-row">
                     <div class="form-group">
-                        <label>Edad</label>
-                        <input type="number" name="Edad" placeholder="Ej: 24" required>
+                        <label for="op-edad">Edad</label>
+                        <input id="op-edad" type="number" name="Edad" placeholder="Ej: 24" required>
                     </div>
                     <div class="form-group">
-                        <label>Teléfono</label>
-                        <input type="tel" name="Teléfono" placeholder="600 000 000" required>
+                        <label for="op-tel">Teléfono</label>
+                        <input id="op-tel" type="tel" name="Teléfono" placeholder="600 000 000" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>¿A qué turno te unirás?</label>
-                    <select name="Turno">
+                    <label for="op-turno">¿A qué turno te unirás?</label>
+                    <select id="op-turno" name="Turno" required>
                         <option value="" disabled selected>Selecciona tu turno</option>
                         <option value="Turno 1">Turno 1</option>
                         <option value="Turno 2">Turno 2</option>
@@ -126,8 +139,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>¿Has preparado pruebas físicas antes?</label>
-                    <select name="experiencia">
+                    <label for="op-exp">¿Has preparado pruebas físicas antes?</label>
+                    <select id="op-exp" name="experiencia" required>
                         <option value="" disabled selected>Selecciona tu experiencia</option>
                         <option value="Principiante">No, empiezo de cero</option>
                         <option value="Intermedio">He entrenado por mi cuenta</option>
@@ -135,8 +148,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Observaciones o dudas</label>
-                    <textarea name="mensaje" rows="4" placeholder="Cuéntanos tus dudas..."></textarea>
+                    <label for="op-msg">Observaciones o dudas</label>
+                    <textarea id="op-msg" name="mensaje" rows="4" placeholder="Cuéntanos tus dudas..."></textarea>
                 </div>
                 <button type="submit" class="btn-submit">Enviar Solicitud</button>
             </form>
@@ -144,21 +157,23 @@
 
         <section class="info-section">
             <h2>¿Dónde entrenamos?</h2>
-            <div class="ubicación-container">
+            <div class="ubicacion-container">
                 <ul class="faq-list">
-                    <li><strong>Instalación:</strong> IDM Fontanar.</li>
-                    <li><strong>Punto de encuentro:</strong> C/ Castelló d'Empuries, 5</li>
+                    <li><strong>Instalación:</strong> IDM El Fontanar.</li>
+                    <li><strong>Punto de encuentro:</strong> C/ Castelló d'Empúries, 5</li>
                     <li><strong>Acceso:</strong> Entrada principal de deportistas.</li>
                     <li>
-                        <cite>*Se ruega llegar 5-10 minutos antes para organizar el grupo</cite>.
+                        <cite>*Se ruega llegar 5-10 minutos antes para organizar el grupo.</cite>
                     </li>
+                </ul>
 
-                    <div class="mapa-placeholder">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5144873477852!2d-4.7959321!3d37.8716492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d209ed398a679%3A0xfe712c38b88f228b!2sINSTALACI%C3%93N%20DEPORTIVA%20Y%20PISTA%20DE%20ATLETISMO%20EL%20FONTANAR!5e0!3m2!1ses!2ses!4v1777535710801!5m2!1ses!2ses"
-                            width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy=" no-referrer-when-downgrade"></iframe>
-                    </div>
+                <div class="mapa-placeholder" style="width: 100%; max-width: 800px;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5144873477852!2d-4.7959321!3d37.8716492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d209ed398a679%3A0xfe712c38b88f228b!2sINSTALACI%C3%93N%20DEPORTIVA%20Y%20PISTA%20DE%20ATLETISMO%20EL%20FONTANAR!5e0!3m2!1ses!2ses!4v1777535710801!5m2!1ses!2ses"
+                        width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Mapa de la Instalación Deportiva Municipal El Fontanar"></iframe>
+                </div>
             </div>
         </section>
 
@@ -166,7 +181,7 @@
             <h3>¿Tienes dudas sobre las pruebas físicas?</h3>
             <p>Contacta directamente con nosotros para recibir asesoramiento personalizado:</p>
             <div class="botones-contacto">
-                <a href="https://wa.me/34691984336" class="btn-whatsapp">
+                <a href="https://wa.me/34691984336" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
                 </a>
                 <div class="telefonos">
@@ -198,38 +213,33 @@
 
             <div class="footer-column contact">
                 <h4>Dónde estamos</h4>
-                <p>📍 IDM El Fontanar, Córdoba</p>
-                <p>📧 al.andalusatletismocordoba@gmail.com</p>
-                <p>📞 +34 620 585 735 / +34 620 905 347</p>
+                <p>📍 <a href="https://maps.google.com/?q=Instalacion+Deportiva+Municipal+El+Fontanar+Cordoba"
+                        target="_blank" rel="noopener noreferrer">IDM El Fontanar, Córdoba</a></p>
+                <p>📧 <a href="mailto:al.andalusatletismocordoba@gmail.com">al.andalusatletismocordoba@gmail.com</a></p>
+                <p>📞 <a href="tel:+34620585735">+34 620 585 735</a> / <a href="tel:+34620905347">+34 620 905 347</a>
+                </p>
             </div>
 
             <div class="footer-column social">
                 <h4>Síguenos</h4>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/clubdeatletismoalandalus?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                        class="social-icon" aria-label="Instagram">
+                    <a href="https://www.instagram.com/clubdeatletismoalandalus" target="_blank"
+                        rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="https://www.instagram.com/clubdeatletismoalandalus?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                        class="link"><em>@clubatletismoalandalus</em></a>
+                    <a href="https://www.instagram.com/clubdeatletismoalandalus" target="_blank"
+                        rel="noopener noreferrer" class="link"><em>@clubdeatletismoalandalus</em></a>
                 </div>
             </div>
         </div>
-        <footer class="footer-principal"
-            style="text-align: center; padding: 20px 10px; background-color: #1a1a1a; border-top: 1px solid #333;">
-            <p style="margin: 0; color: #ffffff; font-size: 0.9rem; letter-spacing: 0.5px;">
-                &copy; 2026 Club de Atletismo Al-Ándalus Córdoba. Todos los derechos reservados.
-            </p>
-
+        <div class="footer-principal">
+            <p>&copy; 2026 Club de Atletismo Al-Ándalus Córdoba. Todos los derechos reservados.</p>
             <div class="footer-links">
-                <a href="/Terminos"
-                    style="color: #ff6600; text-decoration: none; font-size: 0.85rem; font-weight: bold; transition: color 0.3s;"
-                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#ff6600'">
-                    Términos y Condiciones de Uso
-                </a>
+                <a href="/Terminos">Términos y Condiciones de Uso</a>
             </div>
-        </footer>
+        </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
@@ -263,7 +273,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>
