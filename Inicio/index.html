@@ -38,7 +38,7 @@
             </div>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="/Inicio">Inicio</a></li>
+                <li><a href="/Inicio" class="active-page">Inicio</a></li>
                 <li><a href="/Equipo">Equipo Técnico</a></li>
                 <li><a href="/Escuelas">Escuelas</a></li>
                 <li><a href="/Calendario">Calendario</a></li>
@@ -279,10 +279,27 @@
                     }
                 });
             });
+
+            // Botón volver arriba
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                });
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
-</body>
 
-</html>
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+</body>
 
 </html>

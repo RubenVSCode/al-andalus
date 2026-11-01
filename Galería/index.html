@@ -43,7 +43,7 @@
                 <li><a href="/Escuelas">Escuelas</a></li>
                 <li><a href="/Calendario">Calendario</a></li>
                 <li><a href="/Récords">Récords</a></li>
-                <li><a href="/Galería">Galería</a></li>
+                <li><a href="/Galería" class="active-page">Galería</a></li>
                 <li><a href="/Opositores">Opositores CNP</a></li>
                 <li><a href="/Inicio#inscripciones" class="btn-nav">Inscripciones</a></li>
             </ul>
@@ -122,7 +122,7 @@
                 <img src="../images/01-11-2026/WhatsApp Image 2026-10-30 at 19.51.55 (1).jpeg" alt="Momento Al-Ándalus 01-11-2026 4" loading="lazy">
             </div>
             <div class="galeria-item">
-                <img src="../images/01-11-2026/WhatsApp Image 2026-10-30 at 19.51.55 (2).jpeg" alt="Momento Al-Ándalus 01-11-2026 5" loading="lazy">
+                <img src="../images/01-11-2026/WhatsApp Image 2026-10-30 at 19.51.55 (2).jpeg" alt="Momento Al-Ándalus 01-11-2026 5" data-rotate="90" loading="lazy">
             </div>
             <div class="galeria-item">
                 <img src="../images/01-11-2026/WhatsApp Image 2026-10-30 at 19.51.55 (3).jpeg" alt="Momento Al-Ándalus 01-11-2026 6" loading="lazy">
@@ -203,6 +203,19 @@
         </div>
     </footer>
 
+    <!-- Visor Lightbox -->
+    <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true">
+        <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar visor"><i class="fa-solid fa-xmark"></i></button>
+        <button id="lightbox-prev" class="lightbox-prev" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Vista ampliada">
+        <button id="lightbox-next" class="lightbox-next" aria-label="Imagen siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+        <div id="lightbox-counter" class="lightbox-counter"></div>
+    </div>
+
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
@@ -234,6 +247,81 @@
                     }
                 });
             });
+
+            // Enderezar automáticamente fotos con data-rotate="90"
+            document.querySelectorAll('img[data-rotate="90"]').forEach(img => {
+                const rotateImg = () => {
+                    if (img.dataset.rotated) return;
+                    try {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.naturalHeight;
+                        canvas.height = img.naturalWidth;
+                        const ctx = canvas.getContext('2d');
+                        ctx.translate(canvas.width / 2, canvas.height / 2);
+                        ctx.rotate(Math.PI / 2);
+                        ctx.drawImage(img, -img.naturalWidth / 2, -img.naturalHeight / 2);
+                        img.dataset.rotated = 'true';
+                        img.src = canvas.toDataURL('image/jpeg', 0.92);
+                    } catch (e) {}
+                };
+                if (img.complete && img.naturalWidth) {
+                    rotateImg();
+                } else {
+                    img.addEventListener('load', rotateImg, { once: true });
+                }
+            });
+
+            // Lightbox
+            const galleryImages = Array.from(document.querySelectorAll('.galeria-item img'));
+            const modal = document.getElementById('lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('lightbox-close');
+            const prevBtn = document.getElementById('lightbox-prev');
+            const nextBtn = document.getElementById('lightbox-next');
+            const counter = document.getElementById('lightbox-counter');
+            let currentIndex = 0;
+
+            const showImage = (index) => {
+                currentIndex = (index + galleryImages.length) % galleryImages.length;
+                const target = galleryImages[currentIndex];
+                modalImg.src = target.src;
+                modalImg.alt = target.alt;
+                counter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeLightbox = () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            galleryImages.forEach((img, idx) => {
+                img.parentElement.addEventListener('click', () => showImage(idx));
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
+            nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeLightbox(); });
+
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+            });
+
+            // Botón volver arriba
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    scrollTopBtn.classList.toggle('visible', window.scrollY > 350);
+                });
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>

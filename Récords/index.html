@@ -42,7 +42,7 @@
                 <li><a href="/Equipo">Equipo Técnico</a></li>
                 <li><a href="/Escuelas">Escuelas</a></li>
                 <li><a href="/Calendario">Calendario</a></li>
-                <li><a href="/Récords">Récords</a></li>
+                <li><a href="/Récords" class="active-page">Récords</a></li>
                 <li><a href="/Galería">Galería</a></li>
                 <li><a href="/Opositores">Opositores CNP</a></li>
                 <li><a href="/Inicio#inscripciones" class="btn-nav">Inscripciones</a></li>
@@ -55,15 +55,40 @@
         <header class="records-header">
             <h1><i class="fa-solid fa-trophy"></i> HALL OF FAME</h1>
             <p>Récords Históricos del Club de Atletismo Al-Ándalus</p>
+            <div class="records-header-meta">
+                <span class="records-updated-badge"><i class="fa-regular fa-clock"></i> Actualizado: 31 de octubre de 2026</span>
+                <a href="../RÉCORDS DEL CLUB 31-10-26.pdf" target="_blank" rel="noopener noreferrer" class="btn-pdf-records">
+                    <i class="fa-solid fa-file-pdf"></i> Descargar PDF Oficial
+                </a>
+            </div>
         </header>
 
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="masc">Masculino</button>
-            <button class="filter-btn" data-filter="fem">Femenino</button>
+        <div class="records-controls">
+            <div class="records-search-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" id="records-search" class="records-search-input"
+                    placeholder="Buscar atleta o prueba (ej: Soriano, Longitud, 60 ml)...">
+            </div>
+
+            <div class="filter-container" style="margin-bottom: 5px;">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="masc">Masculino</button>
+                <button class="filter-btn" data-filter="fem">Femenino</button>
+            </div>
+
+            <div class="category-filter">
+                <button class="cat-btn active" data-cat="all">Todas las categorías</button>
+                <button class="cat-btn" data-cat="SUB 12">Sub 12</button>
+                <button class="cat-btn" data-cat="SUB 14">Sub 14</button>
+                <button class="cat-btn" data-cat="SUB 16">Sub 16</button>
+                <button class="cat-btn" data-cat="SUB 18">Sub 18</button>
+                <button class="cat-btn" data-cat="SUB 20/23">Sub 20/23</button>
+                <button class="cat-btn" data-cat="MÁSTER">Máster</button>
+            </div>
         </div>
 
-        <div class="grid-records">
+        <div class="grid-records" id="grid-records">
+            <p id="no-records-msg" class="no-records-msg hidden">No se encontraron récords para esa búsqueda.</p>
             <!-- SUB 12 MASCULINO -->
             <div class="card-record" data-gender="masc">
                 <div class="card-header">
@@ -999,6 +1024,10 @@
         </div>
     </footer>
 
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
@@ -1030,24 +1059,84 @@
                     }
                 });
             });
-        });
 
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter');
+            // Botón volver arriba
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    scrollTopBtn.classList.toggle('visible', window.scrollY > 350);
+                });
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
 
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+            // Filtros combinados (Género + Categoría + Búsqueda)
+            let activeGender = 'all';
+            let activeCat = 'all';
+            const searchInput = document.getElementById('records-search');
+            const noRecordsMsg = document.getElementById('no-records-msg');
+            const cards = document.querySelectorAll('.card-record');
 
-                document.querySelectorAll('.card-record').forEach(card => {
+            const normalize = (str) => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+            const applyRecordsFilter = () => {
+                const query = normalize(searchInput ? searchInput.value.trim() : '');
+                let visibleCardsCount = 0;
+
+                cards.forEach(card => {
                     const gender = card.getAttribute('data-gender');
-                    if (filter === 'all' || gender === filter) {
+                    const headerText = card.querySelector('.card-header h3')?.textContent || '';
+                    const matchesGender = activeGender === 'all' || gender === activeGender;
+                    const matchesCat = activeCat === 'all' || headerText.startsWith(activeCat);
+
+                    const rows = card.querySelectorAll('.linea-record');
+                    let matchingRowsInCard = 0;
+
+                    rows.forEach(row => {
+                        const rowText = normalize(row.textContent || '');
+                        if (!query || rowText.includes(query)) {
+                            row.classList.remove('hidden');
+                            matchingRowsInCard++;
+                        } else {
+                            row.classList.add('hidden');
+                        }
+                    });
+
+                    if (matchesGender && matchesCat && matchingRowsInCard > 0) {
                         card.classList.remove('hidden');
+                        visibleCardsCount++;
                     } else {
                         card.classList.add('hidden');
                     }
                 });
+
+                if (noRecordsMsg) {
+                    noRecordsMsg.classList.toggle('hidden', visibleCardsCount > 0);
+                }
+            };
+
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    activeGender = button.getAttribute('data-filter');
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    applyRecordsFilter();
+                });
             });
+
+            document.querySelectorAll('.cat-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    activeCat = button.getAttribute('data-cat');
+                    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    applyRecordsFilter();
+                });
+            });
+
+            if (searchInput) {
+                searchInput.addEventListener('input', applyRecordsFilter);
+            }
         });
     </script>
 </body>

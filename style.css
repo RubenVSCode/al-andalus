@@ -1643,6 +1643,15 @@ body {
     gap: 15px;
 }
 
+.noticia-col-foto img {
+    cursor: zoom-in;
+    transition: transform 0.25s ease;
+}
+
+.noticia-col-foto img:hover {
+    transform: scale(1.02);
+}
+
 .noticia-galeria-grid img {
     width: 100%;
     height: 260px;
@@ -1650,6 +1659,13 @@ body {
     border: 1px solid #e0e0e0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.noticia-galeria-grid img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 102, 0, 0.25);
 }
 
 /* Sección Promocional de Carteles */
@@ -1731,4 +1747,256 @@ body {
     gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+/* Página activa en menú */
+.nav-links li a.active-page:not(.btn-nav) {
+    color: var(--naranja);
+}
+
+.nav-links li a.active-page:not(.btn-nav)::after {
+    width: 100%;
+}
+
+/* Buscador y filtros avanzados en Récords */
+.records-header-meta {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.records-updated-badge {
+    background: rgba(255, 107, 0, 0.15);
+    border: 1px solid var(--naranja);
+    color: #ffb380;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-pdf-records {
+    background: var(--naranja);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-pdf-records:hover {
+    background: #e65a00;
+    transform: translateY(-2px);
+}
+
+.records-controls {
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.records-search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+}
+
+.records-search-wrapper i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.records-search-input {
+    width: 100%;
+    padding: 12px 40px 12px 44px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+.records-search-input:focus {
+    border-color: var(--naranja);
+    box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.15);
+}
+
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cat-btn {
+    padding: 7px 16px;
+    border: 1px solid #ddd;
+    background: #f8f8f8;
+    color: #444;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.cat-btn:hover,
+.cat-btn.active {
+    background: var(--negro);
+    color: var(--naranja);
+    border-color: var(--naranja);
+}
+
+.no-records-msg {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 1.1rem;
+    grid-column: 1 / -1;
+}
+
+/* Visor Lightbox para Galería y Noticias */
+.noticia-galeria-grid img {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.noticia-galeria-grid img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.lightbox-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    padding: 20px;
+}
+
+.lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    user-select: none;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: var(--naranja);
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 25px;
+}
+
+.lightbox-prev {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-next {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Botón flotante Volver Arriba */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--naranja);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+    background: var(--negro);
+    color: var(--naranja);
+    border: 2px solid var(--naranja);
 }

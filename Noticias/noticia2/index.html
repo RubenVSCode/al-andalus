@@ -201,8 +201,82 @@
                     }
                 });
             });
+
+            // Lightbox para imágenes de la noticia
+            const lightbox = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCounter = document.getElementById('lightbox-counter');
+            const closeBtn = document.getElementById('lightbox-close');
+            const prevBtn = document.getElementById('lightbox-prev');
+            const nextBtn = document.getElementById('lightbox-next');
+            const articleImages = Array.from(document.querySelectorAll('.noticia-col-foto img, .noticia-galeria-grid img'));
+            let currentIdx = 0;
+
+            const showImage = (index) => {
+                if (!articleImages.length) return;
+                currentIdx = (index + articleImages.length) % articleImages.length;
+                const target = articleImages[currentIdx];
+                lightboxImg.src = target.src;
+                lightboxImg.alt = target.alt || 'Imagen ampliada';
+                lightboxCounter.textContent = `${currentIdx + 1} / ${articleImages.length}`;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            articleImages.forEach((img, idx) => {
+                img.addEventListener('click', () => showImage(idx));
+            });
+
+            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIdx - 1); });
+            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIdx + 1); });
+            if (lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox || !lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showImage(currentIdx - 1);
+                if (e.key === 'ArrowRight') showImage(currentIdx + 1);
+            });
+
+            // Botón volver arriba
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                });
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+        <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar">&times;</button>
+        <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Imagen ampliada">
+        <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Imagen siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+        <div id="lightbox-counter" class="lightbox-counter"></div>
+    </div>
+
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 </body>
 
 </html>

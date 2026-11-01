@@ -41,7 +41,7 @@
                 <li><a href="/Inicio">Inicio</a></li>
                 <li><a href="/Equipo">Equipo Técnico</a></li>
                 <li><a href="/Escuelas">Escuelas</a></li>
-                <li><a href="/Calendario">Calendario</a></li>
+                <li><a href="/Calendario" class="active-page">Calendario</a></li>
                 <li><a href="/Récords">Récords</a></li>
                 <li><a href="/Galería">Galería</a></li>
                 <li><a href="/Opositores">Opositores CNP</a></li>
@@ -57,7 +57,8 @@
             <p class="section-subtitle">Consulta las fechas y sedes de los próximos eventos de la FAA</p>
 
             <div class="month-filter">
-                <button class="month-btn active" data-filter="all">Todos</button>
+                <button class="month-btn active" data-filter="upcoming">Próximas</button>
+                <button class="month-btn" data-filter="all">Todas</button>
                 <button class="month-btn" data-filter="may">Mayo</button>
                 <button class="month-btn" data-filter="jun">Junio</button>
                 <button class="month-btn" data-filter="jul">Julio</button>
@@ -772,9 +773,14 @@
         </div>
     </footer>
 
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <script>
         const buttons = document.querySelectorAll('.month-btn');
         const cards = document.querySelectorAll('.calendario-card');
+        const upcomingMonths = ['nov', 'dic'];
 
         buttons.forEach(button => {
             button.addEventListener('click', () => {
@@ -793,13 +799,16 @@
 
         function applyFilter(filter) {
             cards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-month') === filter) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+                const month = card.getAttribute('data-month');
+                const match = filter === 'all' ||
+                    (filter === 'upcoming' && upcomingMonths.includes(month)) ||
+                    month === filter;
+                card.style.display = match ? 'flex' : 'none';
             });
         }
+
+        // Mostrar próximas por defecto al cargar
+        applyFilter('upcoming');
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -832,6 +841,16 @@
                     }
                 });
             });
+
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    scrollTopBtn.classList.toggle('visible', window.scrollY > 350);
+                });
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>

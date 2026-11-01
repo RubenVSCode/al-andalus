@@ -44,7 +44,7 @@
                 <li><a href="/Calendario">Calendario</a></li>
                 <li><a href="/Récords">Récords</a></li>
                 <li><a href="/Galería">Galería</a></li>
-                <li><a href="/Opositores">Opositores CNP</a></li>
+                <li><a href="/Opositores" class="active-page">Opositores CNP</a></li>
                 <li><a href="/Inicio#inscripciones" class="btn-nav">Inscripciones</a></li>
             </ul>
         </nav>
@@ -271,8 +271,27 @@
                     }
                 });
             });
+
+            // Botón volver arriba
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                });
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
+
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 </body>
 
 </html>
